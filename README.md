@@ -1,2 +1,2 @@
 # Learning-process
-Projects that helped me learn Devops.
+Projects that helped me learn AWS & Devops.
