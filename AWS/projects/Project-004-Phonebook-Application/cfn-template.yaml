@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: |
   CloudFormation Template for Phonebook Application. This template creates Application Load Balancer 
-  with Auto Scaling Group of Amazon Linux 2 (XXXXXXXXXXXXX) EC2 Instances which host Python Flask Web Application. EC2 instances are placed within WebServerSecurityGroup which allows http (80) connections only from ALBSecurityGroup, and allows tcp(3306) connections only within itself. RDS DB instance is placed within WebServerSecurityGroup so that Database Server can communicate with Web Servers. Application Load Balancer is placed within ALBSecurityGroup which allows http (80) connections from anywhere. WebServerASG Auto Scaling Group is using the WebServerLT Launch Template in order to spin up instances needed. WebServerLT Launch Template is configured to prepare Python Flask environment on EC2, and to deploy Phonebook Application on Flask Server after downloading the app code from Github repository.
+  with Auto Scaling Group of Amazon Linux 2 EC2 Instances which host Python Flask Web Application. EC2 instances are placed within WebServerSecurityGroup which allows http (80) connections only from ALBSecurityGroup, and allows tcp(3306) connections only within itself. RDS DB instance is placed within WebServerSecurityGroup so that Database Server can communicate with Web Servers. Application Load Balancer is placed within ALBSecurityGroup which allows http (80) connections from anywhere. WebServerASG Auto Scaling Group is using the WebServerLT Launch Template in order to spin up instances needed. WebServerLT Launch Template is configured to prepare Python Flask environment on EC2, and to deploy Phonebook Application on Flask Server after downloading the app code from Github repository.
 Parameters:
   MyVPC:
     Description: VPC Id of your existing account
@@ -46,7 +46,7 @@ Resources:
     Type: AWS::EC2::LaunchTemplate
     Properties:
       LaunchTemplateData:
-        ImageId: ami-0cff7528ff583bf9a
+        ImageId: ami-0889a44b331db0194
         InstanceType: t2.micro
         KeyName: !Ref KeyName
         SecurityGroupIds:
@@ -134,14 +134,14 @@ Resources:
       AutoMinorVersionUpgrade: false
       BackupRetentionPeriod: 0
       DBInstanceClass: db.t2.micro
-      DBInstanceIdentifier: phonebook-app-db1
-      DBName: clarusway_phonebook
+      DBInstanceIdentifier: phonebook-ata-db1
+      DBName: atamert_phonebook
       DBSecurityGroups: 
         - !Ref MyDBSecurityGroup
       Engine: MySQL
-      EngineVersion: 8.0.19
+      EngineVersion: 8.0.32
       MasterUsername: admin
-      MasterUserPassword: Clarusway_1
+      MasterUserPassword: atamert123
       Port: 3306
       PubliclyAccessible: true
 
