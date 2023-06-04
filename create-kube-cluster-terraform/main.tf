@@ -19,7 +19,7 @@ locals {
   # change here, optional
   name = "atamertbilgin"
   keyname = "first-key"
-  instancetype = "t3a.medium"
+  instancetype = "t3a.medium" #t3a is mandatory.
   ami = "ami-0557a15b87f6559cf"
 }
 
